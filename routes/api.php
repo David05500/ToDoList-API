@@ -13,6 +13,18 @@ use Illuminate\Http\Request;
 |
 */
 
+
+$router->group(["prefix" => "tasks"], function ($router) {
+
+	$router->post("", "Tasks@create");
+	$router->get("", "Tasks@list");
+	$router->put("{task}", "Tasks@update");
+	$router->delete("{task}", "Tasks@delete");
+	// $router->patch("{task}/complete", "Tasks@complete");
+
+});
+
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
